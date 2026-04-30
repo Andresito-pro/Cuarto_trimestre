@@ -26,7 +26,19 @@ def eliminar_productos(productos, nombre):
             productos.remove(producto)
             print(f"El producto '{nombre.title()}' ha sido eliminado del inventario")
             return
-    print("El producto no existe")
+    print(f"Error: El producto '{nombre}' no existe")
+
+def ordenar_por_nombre(productos):
+    productos.sort(key=lambda x: x['nombre'].lower())
+    print("\nInventario ordenado por nombre.")
+
+def ordenar_por_precio(productos):
+    productos.sort(key=lambda x: x['precio'])
+    print(f"\nInventario ordenado por precio.")
+
+def invertir_inventario(productos):
+    productos.reverse()
+    print("\nOrden del inventario invertido manualmente.")
 
 def main():
     inventario = [
@@ -35,10 +47,15 @@ def main():
         {'nombre': 'Destornillador', 'precio': 18000}
     ]
     
-    mostrar_inventario(inventario)
     agregar_producto(inventario, "Sierra", 45000)
-    insertar_productos(inventario, 1, "broca", 25)
+    insertar_productos(inventario, 1, "broca", 2500)
     eliminar_productos(inventario, "martillo")
+    
+    print("-" * 30)
+    ordenar_por_precio(inventario)
+    mostrar_inventario(inventario)
+    
+    invertir_inventario(inventario)
     mostrar_inventario(inventario)
 
 if __name__ == "__main__":
