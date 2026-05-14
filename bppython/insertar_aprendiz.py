@@ -6,7 +6,7 @@ cursor = conexion.cursor()
 
   
 sql = '''
-INSERT INTO aprendices(nombre, ficha, programme) 
+INSERT INTO aprendices(nombre, ficha, programa) 
 VALUES(%s, %s, %s)
 '''
 
