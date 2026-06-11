@@ -1,0 +1,33 @@
+
+from conexion import conectar
+
+def insertar_roles():
+    conexion = conectar()
+    if conexion:
+        cursor = conexion.cursor()
+        
+
+        roles_data = [
+            ("Administrador",),
+            ("Estudiante",),
+            ("Docente",)
+        ]
+        
+        sql = "INSERT INTO Roles (nombre_rol) VALUES (%s)"
+        
+        try:
+            for rol in roles_data:
+                cursor.execute(sql, rol)
+                print(f"Rol '{rol[0]}' insertado correctamente.")
+            
+            conexion.commit()
+            print("Todos los roles fueron guardados.")
+            
+        except Exception as e:
+            print(f"Error al insertar roles: {e}")
+        finally:
+            cursor.close()
+            conexion.close()
+
+if __name__ == "__main__":
+    insertar_roles()
