@@ -1,4 +1,3 @@
-
 from conexion import conectar
 
 def insertar_roles():
@@ -6,7 +5,6 @@ def insertar_roles():
     if conexion:
         cursor = conexion.cursor()
         
-
         roles_data = [
             ("Administrador",),
             ("Estudiante",),
@@ -18,13 +16,14 @@ def insertar_roles():
         try:
             for rol in roles_data:
                 cursor.execute(sql, rol)
-                print(f"Rol '{rol[0]}' insertado correctamente.")
+                print(f"Rol '{rol[0]}' preparado para insertar.")
             
+            # Confirmamos los cambios en la base de datos
             conexion.commit()
-            print("Todos los roles fueron guardados.")
+            print("¡Éxito! Todos los roles fueron guardados en la base de datos.")
             
         except Exception as e:
-            print(f"Error al insertar roles: {e}")
+            print(f"Error al insertar los datos: {e}")
         finally:
             cursor.close()
             conexion.close()
